@@ -1,6 +1,7 @@
 import logging
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.views.decorators.cache import cache_page
 
 from blog.models import Post
 from blog.forms import CommentForm
@@ -35,6 +36,8 @@ def post_detail(request, slug):
 
 
 # Create your views here.
+@cache_page(300)
+@vary_on_headers("Cookie")
 def index(request):
     # posts = Post.objects.filter(published_at__lte=timezone.now())
     posts = Post.objects.all()
