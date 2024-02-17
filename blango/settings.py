@@ -69,6 +69,7 @@ class Dev(Configuration):
       "allauth.account", 
       "allauth.socialaccount", 
       "allauth.socialaccount.providers.google",
+      "rest_framework.authtoken",
   ]
   ADMINS = [("T N", "themis.nik@outlook.com")]
   SITE_ID = 1
@@ -184,6 +185,14 @@ class Dev(Configuration):
           'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
       },
   ]
+
+  REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+  }
 
 
   # Internationalization
