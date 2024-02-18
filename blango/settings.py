@@ -196,6 +196,13 @@ class Dev(Configuration):
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
     ],
   }
+  
+  SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+        "Basic": {"type": "basic"},
+    }
+  }
 
 
   # Internationalization
