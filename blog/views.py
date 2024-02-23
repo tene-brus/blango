@@ -1,6 +1,7 @@
 import logging
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.urls import reverse
 from django.views.decorators.cache import cache_page
 
 from blog.models import Post
@@ -55,4 +56,6 @@ def index(request):
 
 
 def post_table(request):
-    return render(request, "blog/post-table.html")
+    return render(
+        request, "blog/post-table.html", {"post_list_url": reverse("post-list")}
+    )
