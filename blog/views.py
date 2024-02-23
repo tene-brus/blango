@@ -52,3 +52,7 @@ def index(request):
     ) 
     logger.debug("Got %d posts", len(posts))
     return render(request, "blog/index.html", {"posts": posts})
+
+
+def post_table(request):
+    return render(request, "blog/post-table.html")
